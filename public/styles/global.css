@@ -35,7 +35,7 @@ body { font-family: var(--font); color: var(--color-text); background: var(--col
 }
 
 /* ---- HERO ---- */
-.hero { background: linear-gradient(135deg, #1a56db 0%, #1344b0 100%); color: #fff; padding: 5rem 0; text-align: center; }
+.hero { background: linear-gradient(135deg, #1a56db 0%, #1344b0 100%); color: #fff; padding: 2.5rem 0; text-align: center; }
 .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
 .hero p { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
 .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
