@@ -97,6 +97,10 @@ body { font-family: var(--font); color: var(--color-text); background: var(--col
 .btn-white { background: #fff; color: var(--color-primary); padding: 0.75rem 1.75rem; border-radius: 8px; font-weight: 600; text-decoration: none; }
 .btn-white:hover { background: #f0f4ff; }
 
+/* ---- VIDEO ---- */
+.video-wrapper { max-width: 800px; margin: 0 auto; }
+.video-wrapper video { width: 100%; border-radius: 10px; box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+
 /* ---- FOOTER ---- */
 .site-footer { background: #111827; color: #9ca3af; padding: 3rem 0 1.5rem; }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
