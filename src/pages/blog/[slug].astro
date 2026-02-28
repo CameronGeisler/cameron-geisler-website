@@ -3,7 +3,12 @@ import Layout from '../../layouts/Layout.astro';
 
 // Generate a page for every blog post
 export async function getStaticPaths() {
-  const allPosts = await Astro.glob('../../content/blog/*.md');
+  let allPosts = [];
+  try {
+    allPosts = await Astro.glob('../../content/blog/*.md');
+  } catch {
+    // No blog posts published yet
+  }
   return allPosts.map((post) => ({
     params: { slug: post.frontmatter.slug },
     props: { post },

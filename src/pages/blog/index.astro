@@ -2,7 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 
 // Get all blog posts sorted by date (newest first)
-const allPosts = await Astro.glob('../../content/blog/*.md');
+let allPosts: any[] = [];
+try {
+  allPosts = await Astro.glob('../../content/blog/*.md');
+} catch {
+  // No blog posts published yet
+}
 const posts = allPosts
   .sort((a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf());
 ---
