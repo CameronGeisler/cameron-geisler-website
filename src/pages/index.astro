@@ -2,25 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 import testimonials from '../content/testimonials.json';
 ---
-<Layout title="Math Tutoring & Study Skills" description="Cameron Geisler — math tutor, educator, and writer helping students excel in high school and university math.">
+<Layout title="Math Tutoring & Study Skills" description="Cameron Geisler — UBC Honours Math Graduate offering 1-on-1 online math tutoring for high school and university students.">
 
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>Math Tutoring & Study Skills</h1>
-      <p>I help high school and university students master math — through 1-on-1 tutoring, in-depth articles, and practical study strategies.</p>
+      <h1>UBC Honours Math Graduate<br>teaches math online</h1>
+      <p>1-on-1 tutoring for high school and university students. 10+ years of experience.</p>
       <div class="hero-btns">
-        <a href="/math-tutoring" class="btn btn-primary">Book a Tutoring Session</a>
-        <a href="/blog" class="btn btn-secondary">Read the Blog</a>
+        <a href="/math-tutoring" class="btn btn-primary">Book a Free Consultation</a>
       </div>
     </div>
   </section>
 
   <!-- INTRO VIDEO -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="container">
-      <h2 class="section-title" style="text-align:center;">Watch: What to Expect</h2>
-      <p class="section-subtitle" style="text-align:center;">A quick introduction to how I work with students</p>
       <div class="video-wrapper">
         <video controls preload="metadata">
           <source src="/videos/tutoring_intro_video_2025_oct.mp4" type="video/mp4">
@@ -29,37 +26,10 @@ import testimonials from '../content/testimonials.json';
     </div>
   </section>
 
-  <!-- WHAT I OFFER -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">What I Offer</h2>
-      <p class="section-subtitle">Helping students at every level of math</p>
-      <div class="cards-grid">
-        <div class="card">
-          <h3><a href="/math-tutoring">1-on-1 Math Tutoring</a></h3>
-          <p>Online tutoring for high school and university students. 10+ years of experience, UBC Honours Mathematics graduate.</p>
-        </div>
-        <div class="card">
-          <h3><a href="/math-study-skills">Math Study Skills</a></h3>
-          <p>Learn how to study math effectively — note-taking, homework strategies, and exam preparation.</p>
-        </div>
-        <div class="card">
-          <h3><a href="/math-resources">Math Resources</a></h3>
-          <p>Curated textbook recommendations and resources for students at every level.</p>
-        </div>
-        <div class="card">
-          <h3><a href="/blog">Blog</a></h3>
-          <p>Articles on math, studying, productivity, and more to help you reach your goals.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- TESTIMONIALS -->
   <section class="section section-alt">
     <div class="container">
-      <h2 class="section-title">What Students Say</h2>
-      <p class="section-subtitle">Real reviews from students and parents</p>
+      <h2 class="section-title">From My Students</h2>
       <div class="testimonials-grid">
         {testimonials.slice(0, 6).map((t) => (
           <div class="testimonial">
@@ -67,9 +37,6 @@ import testimonials from '../content/testimonials.json';
             {t.name && <cite>— {t.name}</cite>}
           </div>
         ))}
-      </div>
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="/math-tutoring" class="btn btn-primary" style="background:var(--color-primary); color:#fff;">Book a Session</a>
       </div>
     </div>
   </section>
@@ -79,7 +46,7 @@ import testimonials from '../content/testimonials.json';
     <div class="container">
       <h2>Ready to improve your math grades?</h2>
       <p>Get started with 1-on-1 online tutoring today.</p>
-      <a href="/contact" class="btn-white">Get in Touch</a>
+      <a href="/math-tutoring" class="btn-white">Book a Free Consultation</a>
     </div>
   </section>
 
