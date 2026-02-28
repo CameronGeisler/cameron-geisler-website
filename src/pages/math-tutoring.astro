@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import testimonials from '../content/testimonials.json';
+---
+<Layout title="Math Tutoring" description="1-on-1 online math tutoring for high school and university students. UBC Honours Mathematics graduate with 10+ years experience.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Math Tutoring</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="page-content">
+      <p>I can help you achieve your academic goals with math!</p>
+
+
+
+<p>I offer online 1-on-1 tutoring for high school and university/college. I am a graduate of the Honors Mathematics program at the University of British Columbia, with over 5 years of private tutoring experience.</p>
+
+
+
+<p>My specializations are in:</p>
+
+
+
+<ul>
+<li><strong>University prep</strong>: Helping grade 10-12 students get accepted into their desired post-secondary programs, by boosting their math grade, including Pre-calculus 12/11/10 and Calculus 12 (AP included), etc.</li>
+
+
+
+<li><strong>Adult students</strong>: Helping returning students pass college math, who are struggling to relearn forgotten math since taking it many years ago, guiding them through the relearning process.</li>
+</ul>
+
+
+
+<p>More generally, I can help you with:</p>
+
+
+
+<ul>
+<li>Algebra, Pre-calculus, Calculus</li>
+
+
+
+<li>Discrete Math, Intro to Mathematical Proof, Statistics</li>
+
+
+
+<li>Other advanced topics (just ask!)</li>
+</ul>
+
+
+
+<p>We’ll meet online, using Google Meet and a virtual whiteboard.</p>
+
+
+
+<p>I can guide you through practice questions that you are stuck on, confusing concepts, test reviews, etc.</p>
+
+
+
+<ul>
+<li>You’ll also get our lesson notes after each session, so you can review later.</li>
+
+
+
+<li>You’ll get guidance for using Khan Academy, for personalized and targeted practice based on your knowledge gaps, and to review important prerequisites to make current topics easier.</li>
+</ul>
+
+
+
+<p><strong>My rate is from $50-65/hour, depending on course level, availability, and other factors</strong>.</p>
+
+
+
+<p><strong>I offer a free 15-30 minute session as an intro consultation</strong>, to understand your academic goals, the details of your situation, and give you an idea of how I do things.</p>
+
+
+
+<p><strong>Use the calendar below to book the best time for you</strong>.</p>
+
+
+
+<div id="cal-inline"></div>
+
+
+
+<script>
+(function (C, A, L) {
+  let p = function (a, ar) {
+    a.q.push(ar);
+  };
+  let d = C.document;
+  C.Cal =
+    C.Cal ||
+    function () {
+      let cal = C.Cal;
+      let ar = arguments;
+      if (!cal.loaded) {
+        cal.ns = {};
+        cal.q = cal.q || [];
+        d.head.appendChild(d.createElement("script")).src = A;
+        cal.loaded = true;
+      }
+      if (ar[0] === L) {
+        const api = function () {
+          p(api, arguments);
+        };
+        const namespace = ar[1];
+        api.q = api.q || [];
+        typeof namespace === "string"
+          ? (cal.ns[namespace] = api) && p(api, ar)
+          : p(cal, ar);
+        return;
+      }
+      p(cal, ar);
+    };
+})(window, "https://cal.com/embed.js", "init");
+Cal("init");
+</script>
+
+
+
+<script>
+  Cal("inline", {
+    elementOrSelector: "#cal-inline", // You can also provide an element directly
+    calLink: "camerongeisler/math-tutoring-intro", // The link that you want to embed. It would open https://cal.com/### in embed
+    config: {
+       theme: "light",
+    },
+  });
+</script>
+
+
+
+<p>Alternatively, send me an email at <em><a href="mailto:ckg888888@gmail.com">ckg888888@gmail.com</a></em></p>
+      <a href="/contact" class="btn" style="background:var(--color-primary);color:#fff;margin-top:1rem;display:inline-block;">Book a Session</a>
+    </div>
+  </div>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Student Reviews</h2>
+      <div class="testimonials-grid">
+        {testimonials.map((t) => (
+          <div class="testimonial">
+            <blockquote>{t.review}</blockquote>
+            {t.name && <cite>— {t.name}</cite>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

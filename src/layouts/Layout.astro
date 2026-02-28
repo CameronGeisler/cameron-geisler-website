@@ -1,23 +1,77 @@
-<!doctype html>
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Math tutoring, study skills, and more by Cameron Geisler." } = Astro.props;
+---
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | Cameron Geisler</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="/" class="logo">Cameron Geisler</a>
+      <nav class="main-nav">
+        <a href="/math-tutoring">Math Tutoring</a>
+        <a href="/blog">Blog</a>
+        <a href="/math-study-skills">Study Skills</a>
+        <a href="/math-resources">Resources</a>
+        <a href="/about">About</a>
+        <a href="/contact" class="btn-nav">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    </div>
+  </header>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+  <main>
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Cameron Geisler</h3>
+          <p>Math tutor and educator helping students succeed in high school and university math.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="/math-tutoring">Math Tutoring</a></li>
+            <li><a href="/math-study-skills">Study Skills</a></li>
+            <li><a href="/math-resources">Resources</a></li>
+            <li><a href="/blog">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>More</h4>
+          <ul>
+            <li><a href="/about">About Me</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/textbook">Math Notes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Cameron Geisler. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.main-nav');
+    toggle?.addEventListener('click', () => nav?.classList.toggle('open'));
+  </script>
+</body>
+</html>

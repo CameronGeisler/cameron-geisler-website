@@ -1,0 +1,83 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+// Generate a page for every blog post
+export async function getStaticPaths() {
+  const allPosts = await Astro.glob('../../content/blog/*.md');
+  return allPosts.map((post) => ({
+    params: { slug: post.frontmatter.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { title, date, excerpt } = post.frontmatter;
+const { Content } = post;
+---
+<Layout title={title} description={excerpt || title}>
+  <div class="page-header">
+    <div class="container">
+      <nav class="breadcrumb">
+        <a href="/blog">← Blog</a>
+      </nav>
+      <h1>{title}</h1>
+      {date && (
+        <time class="post-date" datetime={date}>
+          {new Date(date).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          })}
+        </time>
+      )}
+    </div>
+  </div>
+  <div class="container">
+    <div class="post-content page-content">
+      <Content />
+    </div>
+    <div class="post-footer">
+      <a href="/blog" class="back-link">← Back to Blog</a>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .breadcrumb {
+    margin-bottom: 0.75rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+
+  .breadcrumb a:hover {
+    color: #fff;
+  }
+
+  .post-date {
+    display: block;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .post-content {
+    max-width: 720px;
+    padding: 2.5rem 0 3rem;
+  }
+
+  .post-footer {
+    padding-bottom: 3rem;
+  }
+
+  .back-link {
+    color: #1a56db;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+
+  .back-link:hover {
+    text-decoration: underline;
+  }
+</style>

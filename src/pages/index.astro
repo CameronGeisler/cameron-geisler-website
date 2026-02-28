@@ -1,11 +1,73 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import testimonials from '../content/testimonials.json';
 ---
+<Layout title="Math Tutoring & Study Skills" description="Cameron Geisler — math tutor, educator, and writer helping students excel in high school and university math.">
 
-<Layout>
-	<Welcome />
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Math Tutoring & Study Skills</h1>
+      <p>I help high school and university students master math — through 1-on-1 tutoring, in-depth articles, and practical study strategies.</p>
+      <div class="hero-btns">
+        <a href="/math-tutoring" class="btn btn-primary">Book a Tutoring Session</a>
+        <a href="/blog" class="btn btn-secondary">Read the Blog</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT I OFFER -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What I Offer</h2>
+      <p class="section-subtitle">Helping students at every level of math</p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3><a href="/math-tutoring">1-on-1 Math Tutoring</a></h3>
+          <p>Online tutoring for high school and university students. 10+ years of experience, UBC Honours Mathematics graduate.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/math-study-skills">Math Study Skills</a></h3>
+          <p>Learn how to study math effectively — note-taking, homework strategies, and exam preparation.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/math-resources">Math Resources</a></h3>
+          <p>Curated textbook recommendations and resources for students at every level.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/blog">Blog</a></h3>
+          <p>Articles on math, studying, productivity, and more to help you reach your goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">What Students Say</h2>
+      <p class="section-subtitle">Real reviews from students and parents</p>
+      <div class="testimonials-grid">
+        {testimonials.slice(0, 6).map((t) => (
+          <div class="testimonial">
+            <blockquote>{t.review}</blockquote>
+            {t.name && <cite>— {t.name}</cite>}
+          </div>
+        ))}
+      </div>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="/math-tutoring" class="btn btn-primary" style="background:var(--color-primary); color:#fff;">Book a Session</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Ready to improve your math grades?</h2>
+      <p>Get started with 1-on-1 online tutoring today.</p>
+      <a href="/contact" class="btn-white">Get in Touch</a>
+    </div>
+  </section>
+
 </Layout>
