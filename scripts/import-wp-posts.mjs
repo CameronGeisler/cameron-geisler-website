@@ -13,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 
 // ── Post IDs to import (skip 420 = "Principles for Studying Math" — already a standalone page)
-const TARGET_IDS = new Set([160, 390, 400, 410, 430, 467, 652]);
+const TARGET_IDS = new Set([160, 380, 390, 400, 410, 430, 467, 652, 669]);
 
 // ── Simple HTML → Markdown converter
 function htmlToMarkdown(html) {
