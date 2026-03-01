@@ -7,16 +7,16 @@ import testimonials from '../content/testimonials.json';
   <!-- HERO -->
   <section class="hero">
     <div class="container">
-      <h1>UBC Honours Math Graduate<br>teaches math online</h1>
+      <h1>UBC Honours Math Graduate<br>Teaches Math Online</h1>
       <p>1-on-1 tutoring for high school and university students. 10+ years of experience.</p>
       <div class="hero-btns">
-        <a href="/math-tutoring" class="btn btn-primary">Book a Free Consultation</a>
+        <a href="/math-tutoring" class="btn btn-primary">Contact me</a>
       </div>
     </div>
   </section>
 
   <!-- INTRO VIDEO -->
-  <section class="section" style="padding: 1.5rem 0;">
+  <section class="section" style="padding: 0.75rem 0;">
     <div class="container">
       <div class="video-wrapper">
         <video controls preload="metadata" poster="/images/video_thumbnail.jpg">
@@ -30,13 +30,53 @@ import testimonials from '../content/testimonials.json';
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-title">From My Students</h2>
-      <div class="testimonials-grid">
-        {testimonials.slice(0, 6).map((t) => (
-          <div class="testimonial">
-            <blockquote>{t.review}</blockquote>
-            {t.name && <cite>— {t.name}</cite>}
+      <div class="featured-quotes">
+
+        <div class="featured-quote">
+          <p>He made me go from understanding nothing in my course to acing the final exam.</p>
+          <div class="full-review">
+            <p>Cameron was patient kind and an excellent teacher. He quickly adapted to my learning style and fully knew the content he was teaching. <strong>He made me go from understanding nothing in my course to acing the final exam.</strong> Even university stats seemed simple after doing lessons with him. He truly cares about his students and their performance.</p>
           </div>
-        ))}
+          <cite class="cite-toggle">— Nikki</cite>
+        </div>
+
+        <div class="featured-quote">
+          <p>Got me from failing grade to an A in statistics!</p>
+          <div class="full-review">
+            <p>Very helpful! <strong>Got me from failing grade to an A in statistics!</strong></p>
+          </div>
+          <cite class="cite-toggle">— Jan</cite>
+        </div>
+
+        <div class="featured-quote">
+          <p>I don't think I'd be in university right now without him.</p>
+          <div class="full-review">
+            <p>Was never a big math guy. Cameron provided me clear practical instruction whilst also teaching math in a way which made me genuinely passionate about the subject. He is phenomenal at explaining fundamental concepts to beginners and exploring more elaborate problems as well. This guy saved me in high school and <strong>I don't think I'd be in university right now without him.</strong></p>
+          </div>
+          <cite class="cite-toggle">— Jeffrey</cite>
+        </div>
+
+      </div>
+
+      <button class="reviews-toggle">Read more</button>
+      <div class="reviews-more">
+        {testimonials.map((t) => {
+          const idx = t.review.indexOf(t.highlight);
+          const before = idx > -1 ? t.review.slice(0, idx) : '';
+          const after = idx > -1 ? t.review.slice(idx + t.highlight.length) : t.review;
+          return (
+            <div class="review-card">
+              <p class="review-snippet">{t.highlight}</p>
+              <div class="review-full">
+                {idx > -1
+                  ? <p>{before}<strong>{t.highlight}</strong>{after}</p>
+                  : <p>{t.review}</p>
+                }
+              </div>
+              <cite class="cite-toggle">— {t.name}</cite>
+            </div>
+          );
+        })}
       </div>
     </div>
   </section>

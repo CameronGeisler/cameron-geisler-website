@@ -22,12 +22,13 @@ const { title, description = "Math tutoring, study skills, and more by Cameron G
     <div class="container">
       <a href="/" class="logo">Cameron Geisler</a>
       <nav class="main-nav">
-        <a href="/math-tutoring">Math Tutoring</a>
-        <a href="/blog">Blog</a>
-        <a href="/math-study-skills">Study Skills</a>
-        <a href="/math-resources">Resources</a>
-        <a href="/about">About</a>
-        <a href="/contact" class="btn-nav">Contact</a>
+        <a href="/math-tutoring" class="btn-nav">Math Tutoring</a>
+        <a href="/textbook">My Math Notes</a>
+        <a href="/blog">Blog Posts</a>
+        <a href="/about">About Me</a>
+        <a href="/math-study-skills">Math Study Skills</a>
+        <a href="/contact">Contact</a>
+        <a href="https://www.youtube.com/@cameronmath3664" target="_blank" rel="noopener">YouTube</a>
       </nav>
       <button class="nav-toggle" aria-label="Toggle menu">☰</button>
     </div>
@@ -47,6 +48,72 @@ const { title, description = "Math tutoring, study skills, and more by Cameron G
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.main-nav');
     toggle?.addEventListener('click', () => nav?.classList.toggle('open'));
+  </script>
+
+  <script>
+    // Expand/collapse individual reviews via name click
+    document.querySelectorAll('.cite-toggle').forEach(cite => {
+      cite.addEventListener('click', () => {
+        cite.closest('.featured-quote, .review-card')?.classList.toggle('expanded');
+      });
+    });
+
+    // Read all / show fewer toggle
+    const reviewsToggle = document.querySelector('.reviews-toggle');
+    const reviewsMore = document.querySelector('.reviews-more');
+    reviewsToggle?.addEventListener('click', () => {
+      const isVisible = reviewsMore?.classList.toggle('visible');
+      if (reviewsToggle) reviewsToggle.textContent = isVisible ? 'Show less' : 'Read more';
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll('.testimonials-carousel').forEach(carousel => {
+      const track = carousel.querySelector('.testimonials-track') as HTMLElement;
+      const prev = carousel.querySelector('.carousel-prev');
+      const next = carousel.querySelector('.carousel-next');
+      const dotsContainer = carousel.querySelector('.carousel-dots')!;
+      const cards = carousel.querySelectorAll('.testimonial');
+      if (!track || !cards.length) return;
+
+      const perPage = () => window.innerWidth > 900 ? 3 : window.innerWidth > 600 ? 2 : 1;
+      const cardWidth = () => (cards[0] as HTMLElement).offsetWidth + 24;
+
+      function buildDots() {
+        dotsContainer.innerHTML = '';
+        const pages = Math.ceil(cards.length / perPage());
+        for (let i = 0; i < pages; i++) {
+          const dot = document.createElement('button');
+          dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+          dot.setAttribute('aria-label', `Page ${i + 1}`);
+          dot.addEventListener('click', () => track.scrollTo({ left: i * perPage() * cardWidth(), behavior: 'smooth' }));
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateDots() {
+        const page = Math.round(track.scrollLeft / (perPage() * cardWidth()));
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) =>
+          d.classList.toggle('active', i === page));
+      }
+
+      function advance() {
+        const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+        if (atEnd) track.scrollTo({ left: 0, behavior: 'smooth' });
+        else track.scrollBy({ left: perPage() * cardWidth(), behavior: 'smooth' });
+      }
+
+      prev?.addEventListener('click', () => { clearInterval(timer); track.scrollBy({ left: -perPage() * cardWidth(), behavior: 'smooth' }); });
+      next?.addEventListener('click', () => { clearInterval(timer); track.scrollBy({ left: perPage() * cardWidth(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', updateDots, { passive: true });
+      window.addEventListener('resize', buildDots);
+
+      let timer = setInterval(advance, 5000);
+      carousel.addEventListener('mouseenter', () => clearInterval(timer));
+      carousel.addEventListener('mouseleave', () => { timer = setInterval(advance, 5000); });
+
+      buildDots();
+    });
   </script>
 </body>
 </html>

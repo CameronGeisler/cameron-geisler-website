@@ -12,30 +12,37 @@ import testimonials from '../content/testimonials.json';
     <div class="page-content">
       <p>I can help you achieve your academic goals with math!</p>
 
-      <p>I offer online 1-on-1 tutoring for high school and university/college. I am a graduate of the Honors Mathematics program at the University of British Columbia, with over 10 years of private tutoring experience.</p>
+      <p>I offer online 1-on-1 tutoring for high school and university/college.</p>
+
+      <div style="text-align:center; margin: 1.5rem 0;">
+        <img src="/images/headshot.jpg" alt="Cameron Geisler" style="max-width:280px; border-radius:8px;">
+      </div>
+
+      <p>I’m a graduate of the Honors Mathematics program at the University of British Columbia, with over 10 years of private tutoring experience.</p>
 
       <p>My specializations are in:</p>
 
       <ul>
-        <li><strong>University prep</strong>: Helping grades 9-12 students get accepted into their desired post-secondary programs by boosting their math grade, including IB Math, AP Calculus 12, Pre-calculus 12/11/10, Advanced Functions, and Calculus and Vectors.</li>
-        <li><strong>Adult students</strong>: Helping returning students pass college math by rebuilding confidence and relearning foundational skills with straightforward explanations.</li>
+        <li><strong>University prep</strong>: Helping grade 9-12 students get accepted into your top-choice post-secondary program, by boosting your math grade, including IB Math, AP Calculus 12, Pre-calculus 12/11/10, Advanced Functions, Calculus and Vectors, and others.</li>
+        <li><strong>Adult students</strong>: Helping returning students pass college math, by rebuilding your confidence and relearning foundational skills, even if you’ve forgotten most of it years ago. I explain math concepts in simple and straightforward language, understandable even if you’re not a math person.</li>
       </ul>
 
-      <p>University Statistics, Discrete Math, Intro to Mathematical Proof, and other advanced topics available upon request.</p>
+      <p>I can also help you with: University Statistics, Discrete Math, Intro to Mathematical Proof, and other advanced topics (just ask!)</p>
 
-      <p>We’ll meet online using Google Meet and a virtual whiteboard. I can guide you through practice questions, confusing concepts, test reviews, and more.</p>
+      <p><strong>How we’ll work together:</strong></p>
 
       <ul>
-        <li>Post-lesson summary PDFs and practice worksheets with answers included after each session.</li>
-        <li>Full course support for university students — organization, accountability, homework tracking, and exam prep.</li>
-        <li>Guidance for using Khan Academy for personalized practice based on your knowledge gaps.</li>
+        <li>We’ll meet online, using Google Meet and a virtual whiteboard.</li>
+        <li>I can guide you through practice questions that you are stuck on, confusing concepts, test reviews, etc.</li>
+        <li>After each lesson, you’ll get a full summary PDF of what we covered, and a practice worksheet of similar problems (with answers included), so you can reinforce your understanding on your own, and use as a reference to review for exams.</li>
+        <li>For university students, I offer full course support: Helping you stay organized with your course, and keeping you accountable for studying, homework deadlines, and exam preparation.</li>
       </ul>
 
       <p><strong>My rate is from $70-90/hour, depending on course level, availability, and other factors.</strong></p>
 
-      <p><strong>I offer a free 15-30 minute intro consultation</strong> to understand your academic goals and give you an idea of how I work.</p>
+      <p><strong>I offer a free 15-30 minute session as an intro consultation</strong>, to understand your academic goals, the details of your situation, and give you an idea of how I do things.</p>
 
-      <p><strong>Use the calendar below to book the best time for you.</strong></p>
+      <p><strong>Use the calendar below to book the best time for you!</strong></p>
 
 
 
@@ -43,7 +50,7 @@ import testimonials from '../content/testimonials.json';
 
 
 
-<script>
+<script is:inline>
 (function (C, A, L) {
   let p = function (a, ar) {
     a.q.push(ar);
@@ -79,7 +86,7 @@ Cal("init");
 
 
 
-<script>
+<script is:inline>
   Cal("inline", {
     elementOrSelector: "#cal-inline", // You can also provide an element directly
     calLink: "camerongeisler/math-tutoring-intro", // The link that you want to embed. It would open https://cal.com/### in embed
@@ -96,16 +103,23 @@ Cal("init");
     </div>
   </div>
 
-  <section class="section section-alt">
+  <section class="section section-alt" id="reviews">
     <div class="container">
       <h2 class="section-title">Student Reviews</h2>
-      <div class="testimonials-grid">
-        {testimonials.map((t) => (
-          <div class="testimonial">
-            <blockquote>{t.review}</blockquote>
-            {t.name && <cite>— {t.name}</cite>}
-          </div>
-        ))}
+      <div class="testimonials-carousel">
+        <div class="testimonials-track">
+          {testimonials.map((t) => (
+            <div class="testimonial">
+              <blockquote>{t.review}</blockquote>
+              {t.name && <cite>— {t.name}</cite>}
+            </div>
+          ))}
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn carousel-prev" aria-label="Previous">&#8592;</button>
+          <div class="carousel-dots"></div>
+          <button class="carousel-btn carousel-next" aria-label="Next">&#8594;</button>
+        </div>
       </div>
     </div>
   </section>
