@@ -13,7 +13,7 @@ So many students are underusing calculators in their math classes. In particular
 
 Note: for my recommended scientific calculator, click [here](#scientific-calculators).
 
-**You should use your calculator to do most calculations**. Many students try to do complicated arithmetic in their head. You will always make more mistakes than a calculator, and you want to [avoid silly mistakes on tests](https://camerongeisler.com/avoiding-simple-mistakes-on-tests/). At the very least, you can use it to check your answers after you solve it by hand.
+**You should use your calculator to do most calculations**. Many students try to do complicated arithmetic in their head. You will always make more mistakes than a calculator, and you want to [avoid silly mistakes on tests](/blog/avoiding-simple-mistakes-on-tests). At the very least, you can use it to check your answers after you solve it by hand.
 
 **You should use the best calculator you’re allowed to use**. Using the right calculator will improve your test scores, because you will save time and increase accuracy. When studying, you can use the time saved from being a human calculator, to spend more time on understanding the concepts.
 

@@ -36,6 +36,23 @@
 
 ---
 
+## Old WordPress Site (EasyWP — Keep for Now)
+
+The old WordPress site is still live on EasyWP (Namecheap). Even after switching the domain to Cloudflare,
+the old site is still accessible and manageable — the domain is just a label.
+
+**To access the old WordPress admin after switching domains:**
+1. Log into EasyWP at **app.easywp.com**
+2. Your old site is still listed there — click "WP Admin" to access it directly
+3. EasyWP gives every site a free subdomain (e.g. `abc123.easywp.com`) that always works regardless of domain
+
+**Credentials needed:**
+- Namecheap login (for app.easywp.com)
+- WordPress username + password for the old site
+- The `*.easywp.com` temporary URL (find it in the EasyWP dashboard under site settings)
+
+---
+
 ## What Was Built (Feb 2026)
 
 - **Dark theme site** — full redesign from WordPress; styles in `public/styles/global.css`

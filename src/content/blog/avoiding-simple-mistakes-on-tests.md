@@ -66,7 +66,7 @@ However, in a timed test, mental math often leads to small and unnoticed mistake
 
 Also, math is not primarily about calculation. Using a calculator frees your mental focus for the harder reasoning parts of the question.
 
-Using your calculator (and having a powerful calculator) reduces the chance of arithmetic mistakes, as long as you learn to use it. See my [Calculator Guide for Students](https://camerongeisler.com/calculator-guide-for-students-how-to-buy-a-calculator/).
+Using your calculator (and having a powerful calculator) reduces the chance of arithmetic mistakes, as long as you learn to use it. See my [Calculator Guide for Students](/blog/calculator-guide-for-students-how-to-buy-a-calculator).
 
 ### **Practice to Maximize Familiarity**
 
