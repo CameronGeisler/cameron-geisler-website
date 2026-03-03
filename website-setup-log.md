@@ -1,6 +1,6 @@
 # Cameron's Website Setup Log
 
-**Last updated:** February 28, 2026
+**Last updated:** March 2, 2026
 
 ---
 
@@ -36,6 +36,17 @@
 
 ---
 
+## Domain Switch (March 2, 2026)
+
+- Cloudflare DNS transfer completed — nameservers at Namecheap updated to:
+  - `holly.ns.cloudflare.com`
+  - `marek.ns.cloudflare.com`
+- DNS propagation in progress (typically 1–2 hours after nameserver change)
+- **After propagation:** go to Cloudflare Pages → cameron-geisler-website → Custom domains → add `camerongeisler.com` to complete the switch
+- Cloudflare now manages DNS for the domain (moved off Namecheap BasicDNS)
+
+---
+
 ## Old WordPress Site (EasyWP — Keep for Now)
 
 The old WordPress site is still live on EasyWP (Namecheap). Even after switching the domain to Cloudflare,
@@ -62,3 +73,5 @@ the old site is still accessible and manageable — the domain is just a label.
 - **Blog** — 9 posts, dark 3-column card grid listing; 13 older posts archived in `src/content/blog/_archive/`
 - **Nav** — Math Tutoring · My Math Notes · Blog Posts · About Me · Math Study Skills · Contact · YouTube
 - **Links** — sky blue (`#7dd3fc`) with slide-in underline hover animation, optimized for dark background
+- **Pre-launch fixes** — rebuilt Math Study Skills page (clean link list), fixed old `camerongeisler.com` links in 4 blog posts, created custom 404 page (`/404`), created private Recommended Textbooks page (`/my-recommended-textbooks`)
+- **Contact page** — removed WordPress comment artifacts, fixed tutoring form link to relative URL
