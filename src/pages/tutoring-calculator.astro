@@ -1,0 +1,213 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Tutoring Income Calculator" description="Figure out how many hours and students you need to reach your tutoring income goals.">
+  <div class="page-header">
+    <div class="container">
+      <h1>Tutoring Income Calculator</h1>
+    </div>
+  </div>
+  <div class="container">
+    <div class="page-content">
+      <p class="lead">Turn your income goal into a concrete tutoring plan. Enter your numbers below.</p>
+
+      <div class="calculator">
+        <div class="calc-inputs">
+          <div class="input-group">
+            <label for="rate">Hourly rate ($)</label>
+            <input type="number" id="rate" placeholder="75" min="1" max="500" value="75" />
+          </div>
+          <div class="input-group">
+            <label for="target">Target annual income ($)</label>
+            <input type="number" id="target" placeholder="100000" min="1" value="100000" />
+          </div>
+          <div class="input-group">
+            <label for="vacation">Weeks of vacation per year</label>
+            <input type="number" id="vacation" placeholder="8" min="0" max="52" value="8" />
+          </div>
+          <div class="input-group">
+            <label for="hours-per-student">Avg hours per student per week</label>
+            <input type="number" id="hours-per-student" placeholder="2" min="0.5" max="20" step="0.5" value="2" />
+          </div>
+        </div>
+
+        <div class="results" id="results">
+          <div class="result-card result-hero" id="result-hours">
+            <div class="result-number" id="hours-per-week">—</div>
+            <div class="result-label">hours/week needed</div>
+          </div>
+          <div class="result-card">
+            <div class="result-number" id="students-needed">—</div>
+            <div class="result-label">students needed</div>
+          </div>
+          <div class="result-card">
+            <div class="result-number" id="weeks-worked">—</div>
+            <div class="result-label">weeks worked/year</div>
+          </div>
+          <div class="result-card">
+            <div class="result-number" id="monthly-target">—</div>
+            <div class="result-label">monthly income target</div>
+          </div>
+        </div>
+
+        <div class="context-note" id="context-note">
+          You need about <strong id="ctx-hours">—</strong> hours/week. At <strong id="ctx-rate">—</strong>/hr, that's a realistic teaching load — especially if you're charging toward the higher end of your rate range.
+        </div>
+      </div>
+
+      <div class="disclaimer">
+        These numbers assume a simple average. Your actual income will vary based on no-shows, cancellations, part-time students, and seasonal demand.
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    background: linear-gradient(135deg, #1a56db 0%, #1344b0 100%);
+    padding: 1.5rem 0;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+  .page-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .lead {
+    font-size: 1.05rem;
+    color: #94a3b8;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+  .calculator {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .calc-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  @media (max-width: 560px) {
+    .calc-inputs { grid-template-columns: 1fr; }
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .input-group input {
+    background: #1a2035;
+    border: 1px solid #2a3142;
+    border-radius: 8px;
+    color: #f1f5f9;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+  .input-group input:focus {
+    outline: none;
+    border-color: #1a56db;
+  }
+  .results {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 600px) {
+    .results { grid-template-columns: 1fr 1fr; }
+  }
+  .result-card {
+    background: #1a2035;
+    border: 1px solid #2a3142;
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+  .result-hero {
+    border-color: #1a56db;
+    background: linear-gradient(135deg, #1a2035 0%, #1e2a4a 100%);
+  }
+  .result-number {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #f1f5f9;
+    line-height: 1.2;
+  }
+  .result-label {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-top: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .context-note {
+    background: #1a2035;
+    border: 1px solid #2a3142;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+  .context-note strong {
+    color: #f1f5f9;
+  }
+  .disclaimer {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: #64748b;
+    line-height: 1.6;
+  }
+</style>
+
+<script is:inline>
+(function () {
+  function calculate() {
+    const rate = parseFloat(document.getElementById('rate').value) || 0;
+    const target = parseFloat(document.getElementById('target').value) || 0;
+    const vacation = parseInt(document.getElementById('vacation').value) || 0;
+    const hoursPerStudent = parseFloat(document.getElementById('hours-per-student').value) || 1;
+
+    const weeksWorked = Math.max(0, 52 - vacation);
+    const hoursPerWeek = weeksWorked > 0 && rate > 0 ? target / (weeksWorked * rate) : 0;
+    const studentsNeeded = hoursPerStudent > 0 ? hoursPerWeek / hoursPerStudent : 0;
+    const monthlyTarget = target / 12;
+
+    function fmt(val, decimals = 1) {
+      if (val === 0) return '—';
+      return val % 1 === 0 ? String(Math.round(val)) : val.toFixed(decimals);
+    }
+
+    document.getElementById('hours-per-week').textContent = fmt(hoursPerWeek);
+    document.getElementById('students-needed').textContent = fmt(studentsNeeded, 1);
+    document.getElementById('weeks-worked').textContent = fmt(weeksWorked, 0);
+    document.getElementById('monthly-target').textContent = '$' + fmt(monthlyTarget, 0);
+
+    document.getElementById('ctx-hours').textContent = fmt(hoursPerWeek) + ' hours';
+    document.getElementById('ctx-rate').textContent = '$' + rate;
+  }
+
+  const inputs = document.querySelectorAll('input');
+  inputs.forEach(i => i.addEventListener('input', calculate));
+  calculate();
+})();
+</script>
