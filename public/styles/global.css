@@ -112,6 +112,7 @@ cite.cite-toggle::after { content: ' ↓'; font-size: 0.75em; opacity: 0.5; }
 .testimonials-carousel { position: relative; }
 .testimonials-track {
   display: flex;
+  align-items: flex-start;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -136,7 +137,7 @@ cite.cite-toggle::after { content: ' ↓'; font-size: 0.75em; opacity: 0.5; }
 @media (max-width: 600px) { .testimonial { flex: 0 0 85%; } }
 
 .testimonial blockquote { color: var(--color-text); font-style: italic; font-size: 0.95rem; line-height: 1.7; }
-.testimonial cite { display: block; margin-top: 1rem; font-size: 0.85rem; color: var(--color-muted); font-style: normal; font-weight: 600; }
+.testimonial cite { display: block; margin-top: 1rem; font-size: 1.05rem; color: var(--color-muted); font-style: normal; font-weight: 600; }
 
 .carousel-controls { display: flex; gap: 0.75rem; justify-content: center; margin-top: 1.5rem; }
 .carousel-btn {
