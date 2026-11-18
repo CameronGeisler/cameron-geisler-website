@@ -97,7 +97,7 @@ Cal("init");
 
 
 
-<p>Alternatively, send me an email at <em><a href="mailto:ckg888888@gmail.com">ckg888888@gmail.com</a></em></p>
+<p>Alternatively, send me an email at <em><a href="mailto:cameron@camerongeisler.com">cameron@camerongeisler.com</a></em></p>
     </div>
   </div>
 
@@ -108,8 +108,14 @@ Cal("init");
         <div class="testimonials-track">
           {testimonials.map((t) => {
             const idx = t.review.indexOf(t.highlight);
-            const before = idx > -1 ? t.review.slice(0, idx) : t.review;
-            const after = idx > -1 ? t.review.slice(idx + t.highlight.length) : '';
+            // A very long review sets the height of every carousel card, so trim it
+            // to the sentences around its highlight.
+            const long = idx > -1 && t.review.length > 500;
+            const start = long ? t.review.lastIndexOf('. ', idx) + 2 : 0;
+            const endDot = long ? t.review.indexOf('. ', idx + t.highlight.length) : -1;
+            const end = endDot > -1 ? endDot + 1 : t.review.length;
+            const before = idx > -1 ? (start > 1 ? '… ' : '') + t.review.slice(start > 1 ? start : 0, idx) : t.review;
+            const after = idx > -1 ? t.review.slice(idx + t.highlight.length, end) + (end < t.review.length ? ' …' : '') : '';
             return (
               <div class="testimonial">
                 <blockquote>
